@@ -4,7 +4,7 @@ from reservapp.models import Usuario, Restaurante, Reserva, RestauranteFavorito,
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ['id', 'nome', 'email', 'fotoURL']
+        fields = '__all__'
 
 class RestauranteSerializer(serializers.ModelSerializer):
     class Meta:
