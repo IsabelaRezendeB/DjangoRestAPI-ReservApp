@@ -1,7 +1,7 @@
 from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path, include
-from reservapp.views import UsuarioViewSet, ReservaViewSet, RestauranteFavoritoViewSet, ItemCardapioViewSet, RestauranteViewSet
+from reservapp.views import ListaItemPorTipo, ListaTiposItem, RestauranteNomeAPIView, UsuarioViewSet, ReservaViewSet, RestauranteFavoritoViewSet, ItemCardapioViewSet, RestauranteViewSet
 from rest_framework import routers
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
@@ -28,5 +28,8 @@ router.register('itemcardapio', ItemCardapioViewSet, basename = 'Items dos Carda
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('itens/<int:restaurante_id>/<str:tipoItem>/', ListaItemPorTipo.as_view()),
+    path('itensrestaurante/<int:restaurante_id>/itens/', ListaTiposItem.as_view(), name='lista-item-por-tipo'),
+    path('restaurante/<str:nome>/', RestauranteNomeAPIView.as_view()),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

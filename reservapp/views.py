@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from rest_framework import viewsets, filters
+from django.shortcuts import get_object_or_404
+from rest_framework import viewsets, filters, generics
 from django_filters.rest_framework import DjangoFilterBackend
 from reservapp.models import Usuario, Restaurante, Reserva, RestauranteFavorito, ItemCardapio
 from reservapp.serializer import UsuarioSerializer, RestauranteSerializer, ReservaSerializer,RestauranteFavoritoSerializer, ItemCardapioSerializer
+from rest_framework.response import Response
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     """Exibindo todas os usuarios"""
@@ -19,6 +20,15 @@ class RestauranteViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['categoria']
     filter_backends[1].search_param = 'q'
+
+class RestauranteNomeAPIView(generics.ListAPIView):
+    
+    def get_queryset(self):
+        nome = self.kwargs['nome']
+        queryset = Restaurante.objects.filter(nome=nome)
+        return queryset
+
+    serializer_class = RestauranteSerializer
 
 class ReservaViewSet(viewsets.ModelViewSet):
     """Exibindo todas as reservas"""
@@ -43,3 +53,21 @@ class ItemCardapioViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ['restaurante_id__id']
     filter_backends[1].search_param = 'q'
+
+class ListaItemPorTipo(generics.ListAPIView):
+    """Listando itens por tipo"""
+
+    def get_queryset(self):
+
+        queryset = ItemCardapio.objects.filter(restaurante_id=self.kwargs['restaurante_id'], tipoItem=self.kwargs['tipoItem'])
+        return queryset
+
+    serializer_class = ItemCardapioSerializer
+
+class ListaTiposItem(generics.ListAPIView):
+    """Listando itens por tipo"""
+    serializer_class = ItemCardapioSerializer
+
+    def get(self, request, restaurante_id):
+        tipo_items = ItemCardapio.objects.filter(restaurante_id=restaurante_id).values_list('tipoItem', flat=True).distinct()
+        return Response(tipo_items)
