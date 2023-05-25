@@ -22,7 +22,7 @@ class RestauranteViewSet(viewsets.ModelViewSet):
     filter_backends[1].search_param = 'q'
 
 class RestauranteNomeAPIView(generics.ListAPIView):
-    
+    """Exibindo restaurantes filtrados por nome"""
     def get_queryset(self):
         nome = self.kwargs['nome']
         queryset = Restaurante.objects.filter(nome=nome)
@@ -47,7 +47,7 @@ class RestauranteFavoritoViewSet(viewsets.ModelViewSet):
     filter_backends[1].search_param = 'q'
 
 class ItemCardapioViewSet(viewsets.ModelViewSet):
-    """Exibindo todos os cardapios"""
+    """Exibindo todos os itens dos cardapios"""
     queryset = ItemCardapio.objects.all()
     serializer_class = ItemCardapioSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
@@ -65,7 +65,7 @@ class ListaItemPorTipo(generics.ListAPIView):
     serializer_class = ItemCardapioSerializer
 
 class ListaTiposItem(generics.ListAPIView):
-    """Listando itens por tipo"""
+    """Listando os tipos de item"""
     serializer_class = ItemCardapioSerializer
 
     def get(self, request, restaurante_id):
