@@ -10,7 +10,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['nome']
+    search_fields = ['email']
     filter_backends[1].search_param = 'q'
 
 class RestauranteViewSet(viewsets.ModelViewSet):
