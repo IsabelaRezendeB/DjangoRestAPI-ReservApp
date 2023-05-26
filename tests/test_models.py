@@ -7,6 +7,7 @@ from django.test.runner import DiscoverRunner
 
 class XMLTestRunner(DiscoverRunner):
     def run_suite(self, suite, **kwargs):
+        """Faz o report dos testes"""
         runner = xmlrunner.XMLTestRunner(output='test-reports')
         return runner.run(suite)
 
