@@ -1,6 +1,16 @@
 from django.test import TestCase
 from reservapp.models import Usuario, Restaurante, Reserva, RestauranteFavorito, ItemCardapio
 
+import xmlrunner
+from django.test.runner import DiscoverRunner
+
+
+class XMLTestRunner(DiscoverRunner):
+    def run_suite(self, suite, **kwargs):
+        runner = xmlrunner.XMLTestRunner(output='test-reports')
+        return runner.run(suite)
+
+
 class UsuarioModelTestCase(TestCase):
 
     def setUp(self):

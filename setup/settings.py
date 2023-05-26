@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+TEST_RUNNER = 'tests.test_models.XMLTestRunner'
 
 INSTALLED_APPS = [
     'django.contrib.admin',

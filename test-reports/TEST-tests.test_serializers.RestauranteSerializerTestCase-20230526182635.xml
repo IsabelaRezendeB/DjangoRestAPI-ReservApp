@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<testsuite name="tests.test_serializers.RestauranteSerializerTestCase-20230526182635" tests="2" time="0.006" failures="0" errors="0">
+	<testcase classname="tests.test_serializers.RestauranteSerializerTestCase" name="test_verifica_campos" time="0.004"/>
+	<testcase classname="tests.test_serializers.RestauranteSerializerTestCase" name="test_verifica_conteudo" time="0.002"/>
+	<system-out><![CDATA[]]></system-out>
+	<system-err><![CDATA[]]></system-err>
+</testsuite>
