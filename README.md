@@ -60,7 +60,7 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
 `DELETE` /restaurantes/{id}/\
 `GET` /restaurantes/?q={categoria}
 ### **Restaurantes filtrados por nome**: 
-`GET` /restaurante/{nome}/\
+`GET` /restaurante/{nome}/
 ### **Reservas**: 
 `GET` /reserva/\
 `POST` /reserva/\
@@ -86,9 +86,9 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
 `DELETE` /itemcardapio/{id}/\
 `GET` /itemcardapio/?q={restaurante_id}
 ### **Itens filtrados por tipo e restaurante**: 
-`GET` /itens/{restaurante_id}/{tipo_item}/\
+`GET` /itens/{restaurante_id}/{tipo_item}/
 ### **Itens por restaurante**: 
-`GET` /itensrestaurante/{restaurante_id}/itens/\
+`GET` /itensrestaurante/{restaurante_id}/itens/
 
 ## Equipe de Desenvolvimento
 
