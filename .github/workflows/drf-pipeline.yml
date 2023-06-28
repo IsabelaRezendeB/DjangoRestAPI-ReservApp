@@ -1,23 +1,17 @@
-version: 2.1
-
+name: DRF Unit Tests
 on:
   push:
     branches:
       - main
-
 jobs:
-  build-and-test:
-    executor: python/default
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
     steps:
       - checkout
       - python/load-cache
       - python/install-deps
       - python/save-cache
       - run:
-          command: ./manage.py test
+          command: python manage.py test
           name: Test
-
-workflows:
-  main:
-    jobs:
-      - build-and-test
