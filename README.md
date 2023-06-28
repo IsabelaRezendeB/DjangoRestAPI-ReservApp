@@ -5,7 +5,7 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
 ## Requisitos
 1. Instalar o [Django Rest Framework](https://www.django-rest-framework.org/) e suas devidas dependências expecificadas.
 2. Utilizei o [Visual Studio Code](https://code.visualstudio.com/) mas também é possível utilizar outro editor de sua preferência.
-3. Para ver a funcionalidade da aplicação, recomendo utilizar o [Postman](https://www.postman.com/downloads/) ou qualquer plataforma de sua preferência que execute teste de API.
+3. Para ver a funcionalidade da aplicação, recomendo utilizar o [Postman](https://www.postman.com/downloads/), a URL /swagger ou qualquer plataforma de sua preferência que execute teste de API. 
 
 ## Execução
 1. Primeiramente, digite no terminal para clonar o repositório:
@@ -36,6 +36,10 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
     ```
     python manage.py runserver
     ```
+7. Para executar os testes:
+    ```
+    python manage.py test
+    ```
 
 ## Endpoints
 É possível visualizar todos os endpoints quando você roda o servidor e entra na URL /swagger/
@@ -46,7 +50,7 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
 `PUT` /usuarios/{id}/\
 `PATCH` /usuarios/{id}/\
 `DELETE` /usuarios/{id}/\
-`GET` /usuarios/?q={nome}
+`GET` /usuarios/?q={email}
 ### **Restaurantes**: 
 `GET` /restaurantes/\
 `POST` /restaurantes/\
@@ -55,6 +59,8 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
 `PATCH` /restaurantes/{id}/\
 `DELETE` /restaurantes/{id}/\
 `GET` /restaurantes/?q={categoria}
+### **Restaurantes filtrados por nome**: 
+`GET` /restaurante/{nome}/\
 ### **Reservas**: 
 `GET` /reserva/\
 `POST` /reserva/\
@@ -79,7 +85,10 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
 `PATCH` /itemcardapio/{id}/\
 `DELETE` /itemcardapio/{id}/\
 `GET` /itemcardapio/?q={restaurante_id}
-
+### **Itens filtrados por tipo e restaurante**: 
+`GET` /itens/{restaurante_id}/{tipo_item}/\
+### **Itens por restaurante**: 
+`GET` /itensrestaurante/{restaurante_id}/itens/\
 
 ## Equipe de Desenvolvimento
 
