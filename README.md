@@ -19,7 +19,7 @@ Back-end desenvolvido em Django Rest Framework para o aplicativo [ReservApp](htt
     ```
 3. Para iniciá-la:
     ```
-    venv\Scripts\activate.bat
+    venv\Scripts\Activate.ps1
     ```
 4. Para instalar as dependências:
     ```
